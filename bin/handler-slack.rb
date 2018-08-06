@@ -167,6 +167,8 @@ class Slack < Sensu::Handler
     when Net::HTTPSuccess
       true
     else
+      puts "\"error\": #{payload_template}"
+      puts "\"error\": #{render_payload_template(slack_channel)}"
       raise response.error!
     end
   end
